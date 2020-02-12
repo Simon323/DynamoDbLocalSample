@@ -36,7 +36,12 @@ namespace DynamoDbLocalSample
                 services.AddAWSService<IAmazonDynamoDB>();
             }
 
-            services.AddRazorPages();
+            // services.AddRazorPages();
+            services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore; //Ignore loop
+            });
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,10 +52,22 @@ namespace DynamoDbLocalSample
                 app.UseDeveloperExceptionPage();
             }
 
+            // app.UseRouting();
+            // app.UseAuthorization();
+            // app.UseEndpoints(endpo => {
+            //     endpo.MapRazorPages();
+            // });
+
             app.UseRouting();
+            app.UseAuthentication();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             app.UseAuthorization();
-            app.UseEndpoints(endpo => {
-                endpo.MapRazorPages();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
             });
         }
     }
