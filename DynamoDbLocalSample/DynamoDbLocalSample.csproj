@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <!-- <PackageReference Include="Microsoft.AspNetCore.App" /> -->
     <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.3.13.1" />
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.6" />
   </ItemGroup>

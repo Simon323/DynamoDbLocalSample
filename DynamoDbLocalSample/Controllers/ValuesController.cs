@@ -20,8 +20,8 @@ namespace DynamoDbLocalSample.Controllers
         }
 
         // GET api/values/init
-        [HttpGet]
-        [Route("init")]
+        [HttpGet("init")]
+        // [Route("init")]
         public async Task Initialise()
         {
             var request = new ListTablesRequest
